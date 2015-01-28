@@ -2,6 +2,8 @@
 
 > Display stats for [Gulp](http://gulpjs.com) tasks
 
+![screenshot](screenshot.png)
+
 ## Installation
 
 ```sh
