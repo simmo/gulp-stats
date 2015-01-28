@@ -1,0 +1,38 @@
+{
+  "name": "gulp-stats",
+  "version": "0.0.1",
+  "description": "Display stats for Gulp tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "time",
+    "task",
+    "profile",
+    "benchmark",
+    "measure",
+    "stats"
+  ],
+  "author": {
+    "name": "Mike Simmonds",
+    "url": "http://simmo.me"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "figures": "^1.3.5",
+    "pretty-hrtime": "^1.0.0",
+    "text-table": "^0.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:simmo/gulp-stats.git"
+  },
+  "bugs": {
+    "url": "https://github.com/simmo/gulp-stats/issues"
+  },
+  "homepage": "https://github.com/simmo/gulp-stats"
+}
