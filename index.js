@@ -22,7 +22,7 @@ module.exports = function(gulp) {
         tableData.push(entry);
     });
 
-    gulp.on('stop', function (e) {
+    gulp.on('stop', function () {
         var totalTime    = process.hrtime(startTime),
             timeDiff     = totalTime[0] + (totalTime[1] / 1e9); // 1 times 10 to the power of 9
 
@@ -30,7 +30,9 @@ module.exports = function(gulp) {
         function formatTable(data) {
             // Sort table by duration
             data.sort(function(a, b) {
-                if (a.durationFloat == b.durationFloat) return 0;
+                if (a.durationFloat === b.durationFloat) {
+                    return 0;
+                }
                 return (a.durationFloat > b.durationFloat) ? -1 : 1;
             });
 
