@@ -1,7 +1,6 @@
 'use strict';
 
 var chalk       = require('chalk'),
-    figures     = require('figures'),
     prettyTime  = require('pretty-hrtime'),
     table       = require('text-table');
 
