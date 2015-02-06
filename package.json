@@ -4,6 +4,7 @@
   "description": "Display stats for Gulp tasks",
   "main": "index.js",
   "scripts": {
+    "pre-test": "jshint *.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -26,7 +27,9 @@
     "pretty-hrtime": "^1.0.0",
     "text-table": "^0.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:simmo/gulp-stats.git"
@@ -34,5 +37,21 @@
   "bugs": {
     "url": "https://github.com/simmo/gulp-stats/issues"
   },
-  "homepage": "https://github.com/simmo/gulp-stats"
+  "homepage": "https://github.com/simmo/gulp-stats",
+  "jshintConfig": {
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "node": true,
+    "quotmark": "single",
+    "strict": true,
+    "undef": true,
+    "unused": true
+  }
 }
