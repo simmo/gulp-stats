@@ -6,8 +6,21 @@ var chalk       = require('chalk'),
 
 module.exports = function(gulp) {
 
-    var tableData = [],
-        startTime = process.hrtime();
+    var tableData, startTime;
+
+    function reset() {
+        tableData = null;
+        startTime = null;
+    }
+
+    reset();
+
+    gulp.on('task_start', function () {
+        if (tableData === null || startTime === null) {
+            tableData = [];
+            startTime = process.hrtime();
+        }
+    });
 
     gulp.on('task_stop', function (e) {
         // Build entry
@@ -49,6 +62,8 @@ module.exports = function(gulp) {
 
         // Display table
         console.log('\n' + formatTable(tableData) + '\n');
+
+        reset();
     });
 
 };
