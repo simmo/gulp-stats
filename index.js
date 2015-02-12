@@ -49,12 +49,30 @@ module.exports = function(gulp) {
                 return (a.durationFloat > b.durationFloat) ? -1 : 1;
             });
 
-            // Map objects
-            var tableDataProcessed = data.map(function(entry) {
-                return [entry.task, chalk.cyan(entry.duration), chalk.magenta(Math.round((entry.durationFloat / timeDiff) * 100) + '%')];
+            var outHead = ['Task', 'Time', '% of total'].map(function(heading) {
+                return chalk.bold.underline(heading);
             });
 
-            return table(tableDataProcessed);
+            var outList = data.map(function(entry) {
+                return [
+                    entry.task,
+                    chalk.cyan(entry.duration),
+                    chalk.magenta(Math.round((entry.durationFloat / timeDiff) * 100) + '%')
+                ];
+            });
+
+            var outTable = [outHead].concat(outList);
+
+            var tableOpts = {
+                align: ["l", "l", "r"],
+                stringLength: function(str) {
+                    var r = new RegExp("\x1b(?:\\[(?:\\d+[ABCDEFGJKSTm]|\\d+;\\d+[Hfm]|" +
+                        "\\d+;\\d+;\\d+m|6n|s|u|\\?25[lh])|\\w)", "g");
+                    return str.replace(r, '').length;
+                }
+            };
+
+            return table(outTable, tableOpts);
         }
 
         // Overview
