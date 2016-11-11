@@ -4,7 +4,9 @@ var chalk       = require('chalk'),
     prettyTime  = require('pretty-hrtime'),
     table       = require('text-table');
 
-module.exports = function(gulp) {
+module.exports = function(gulp, reporter) {
+
+    reporter = typeof reporter !== 'undefined' ? reporter : console.log;
 
     var tableData, startTime;
 
@@ -92,10 +94,10 @@ module.exports = function(gulp) {
         }
 
         // Overview
-        console.log('\nGulp ran', chalk.cyan.bold(tableData.length + ' task' + (tableData.length === 1 ? '' : 's')), 'in', chalk.cyan.bold(prettyTime(totalTime)));
+        reporter('\nGulp ran', chalk.cyan.bold(tableData.length + ' task' + (tableData.length === 1 ? '' : 's')), 'in', chalk.cyan.bold(prettyTime(totalTime)));
 
         // Display table
-        console.log('\n' + formatTable(tableData) + '\n');
+        reporter('\n' + formatTable(tableData) + '\n');
 
         reset();
     });
