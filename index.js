@@ -107,3 +107,4 @@ module.exports = function(gulp, reporter) {
     });
 
 };
+module.exports.defaultReporter = defaultReporter;
