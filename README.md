@@ -7,7 +7,7 @@
 ## Installation
 
 ```sh
-$ npm install --save-dev gulp-stats
+$ npm i --save-dev gulp-stats
 ```
 
 ## Usage
@@ -16,12 +16,13 @@ Add to your `gulpfile.js` before the task(s) you wish to log and pass in the ins
 
 ```js
 // gulpfile.js
-var gulp = require('gulp');
+const gulp = require('gulp');
+const stats = require('gulp-stats');
 
 // Use gulp-stats
-require('gulp-stats')(gulp);
+stats(gulp);
 
 // ... Tasks ...
 ```
 
-MIT © [Mike Simmonds](http://simmo.me)
+MIT © [Mike Simmonds](https://mike.id)
