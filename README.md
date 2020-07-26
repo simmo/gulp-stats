@@ -1,6 +1,6 @@
 # gulp-stats
 
-![npm](https://img.shields.io/npm/v/gulp-stats?style=flat-square) ![npm](https://img.shields.io/npm/dw/gulp-stats?style=flat-square)
+![npm](https://img.shields.io/npm/v/gulp-stats?style=flat-square) ![npm](https://img.shields.io/npm/dw/gulp-stats?style=flat-square) ![Travis (.com)](https://img.shields.io/travis/com/simmo/gulp-stats?style=flat-square)
 
 > Display task stats summary for [Gulp](https://gulpjs.com/)
 
