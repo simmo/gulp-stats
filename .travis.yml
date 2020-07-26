@@ -1,0 +1,9 @@
+language: node_js
+before_script:
+  - npm run build
+node_js:
+  - 'node'
+branches:
+  only:
+    - master
+    - develop

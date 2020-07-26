@@ -2,10 +2,16 @@
 	"name": "gulp-stats",
 	"version": "0.0.3",
 	"description": "Display task stats summary for Gulp",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"screenshot.png",
+		"dist"
+	],
 	"scripts": {
 		"lint": "eslint ./src --ext .ts",
-		"test": "jest"
+		"test": "jest",
+		"build": "tsc --declaration"
 	},
 	"keywords": [
 		"gulp",
