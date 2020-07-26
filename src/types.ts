@@ -1,4 +1,4 @@
-export type Reporter = <R>(report: Report) => R | void;
+export type Reporter = (report: Report) => void;
 
 export type HrTime = [number, number];
 
