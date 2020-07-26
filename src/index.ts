@@ -1,6 +1,6 @@
 import { Gulp } from 'gulp';
 import prettyTime from 'pretty-hrtime';
-import { Report, HrTime, GulpEvent, Reporter } from './types';
+import { Report, HrTime, GulpEvent, Reporter } from './utils/types';
 import logReporter from './reporters/log';
 import hrToMs from './utils/hrToMs';
 

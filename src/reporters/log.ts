@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { Reporter } from '../types';
+import { Reporter } from '../utils/types';
 import table from 'text-table';
 import stripAnsi from 'strip-ansi';
 
