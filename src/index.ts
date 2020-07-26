@@ -2,9 +2,7 @@ import { Gulp } from 'gulp';
 import prettyTime from 'pretty-hrtime';
 import { Report, HrTime, GulpEvent, Reporter } from './types';
 import logReporter from './reporters/log';
-
-const hrToFloat = ([seconds, nanoseconds]: HrTime) =>
-	seconds + nanoseconds / 1e9;
+import hrToMs from './utils/hrToMs';
 
 type Options = {
 	reporter?: Reporter;
@@ -37,7 +35,7 @@ export default function applyStats(gulp: Gulp, options: Options = {}): void {
 		if (!isBranch) {
 			report.tasks.push({
 				name,
-				duration: hrToFloat(duration),
+				duration: hrToMs(duration),
 				durationHr: duration,
 				durationPretty: prettyTime(duration),
 			});
