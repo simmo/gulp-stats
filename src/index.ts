@@ -5,17 +5,22 @@ import logReporter from './reporters/log';
 import hrToMs from './utils/hrToMs';
 
 type Options = {
-	reporter?: Reporter;
 	elapseBeforeReport?: number;
+	includeBranches?: boolean;
+	reporter?: Reporter;
 };
 
 export const defaultOptions: Required<Options> = {
-	reporter: logReporter,
 	elapseBeforeReport: 300,
+	includeBranches: false,
+	reporter: logReporter,
 };
 
-export default function applyStats(gulp: Gulp, options: Options = {}): void {
-	const { reporter, elapseBeforeReport } = { ...defaultOptions, ...options };
+export default function stats(gulp: Gulp, options: Options = {}): void {
+	const { elapseBeforeReport, includeBranches, reporter } = {
+		...defaultOptions,
+		...options,
+	};
 	const tasksInProgress: { [id: number]: number } = {};
 	const report: Report = { tasks: [] };
 	let startTime: HrTime;
@@ -32,7 +37,7 @@ export default function applyStats(gulp: Gulp, options: Options = {}): void {
 	});
 
 	gulp.on('stop', ({ uid, name, duration, branch: isBranch }: GulpEvent) => {
-		if (!isBranch) {
+		if (includeBranches || !isBranch) {
 			report.tasks.push({
 				name,
 				duration: hrToMs(duration),
@@ -49,7 +54,7 @@ export default function applyStats(gulp: Gulp, options: Options = {}): void {
 			report.tasks = report.tasks.sort(
 				({ duration: a }, { duration: b }) => b - a
 			);
-			report.totalTime = hrToFloat(totalTime);
+			report.totalTime = hrToMs(totalTime);
 			report.totalTimeHr = totalTime;
 			report.totalTimePretty = prettyTime(totalTime);
 
