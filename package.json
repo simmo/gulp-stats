@@ -11,7 +11,8 @@
 	"scripts": {
 		"lint": "eslint ./src --ext .ts",
 		"test": "jest",
-		"build": "tsc --declaration"
+		"build": "tsc --declaration",
+		"prepublish": "rm -rf ./dist & npm run build"
 	},
 	"keywords": [
 		"gulp",
@@ -32,19 +33,19 @@
 	},
 	"devDependencies": {
 		"@types/gulp": "^4.0.6",
-		"@types/jest": "^26.0.3",
-		"@types/node": "^14.0.14",
+		"@types/jest": "^26.0.10",
+		"@types/node": "^14.0.27",
 		"@types/pretty-hrtime": "^1.0.0",
 		"@types/text-table": "^0.2.1",
-		"@typescript-eslint/eslint-plugin": "^3.4.0",
-		"@typescript-eslint/parser": "^3.4.0",
-		"eslint": "^7.3.1",
+		"@typescript-eslint/eslint-plugin": "^3.9.0",
+		"@typescript-eslint/parser": "^3.9.0",
+		"eslint": "^7.7.0",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-prettier": "^3.1.4",
 		"gulp": "^4.0.2",
-		"jest": "^26.1.0",
+		"jest": "^26.4.0",
 		"prettier": "^2.0.5",
-		"ts-jest": "^26.1.1",
+		"ts-jest": "^26.2.0",
 		"typescript": "^3.9.5"
 	},
 	"repository": "github:simmo/gulp-stats",
