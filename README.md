@@ -2,7 +2,7 @@
 
 ![npm](https://img.shields.io/npm/v/gulp-stats?style=flat-square) ![npm](https://img.shields.io/npm/dw/gulp-stats?style=flat-square) ![Travis (.com)](https://img.shields.io/travis/com/simmo/gulp-stats?style=flat-square)
 
-> Display task stats summary for [Gulp](https://gulpjs.com/)
+> Display task stats summary for [Gulp](https://gulpjs.com/) 4
 
 ![screenshot](screenshot.png)
 
@@ -29,7 +29,7 @@ stats(gulp);
 
 #### `reporter: (report: Report) => void`
 
-This can be used to provide your own report hander.
+This can be used to provide your own report handler.
 
 A `Report` is defined as:
 
