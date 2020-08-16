@@ -11,6 +11,7 @@
 	"scripts": {
 		"lint": "eslint ./src --ext .ts",
 		"test": "jest",
+		"watch": "tsc --watch",
 		"build": "tsc --declaration",
 		"prepublish": "rm -rf ./dist & npm run build"
 	},
