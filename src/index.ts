@@ -10,13 +10,13 @@ type Options = {
 	reporter?: Reporter;
 };
 
-export const defaultOptions: Required<Options> = {
+const defaultOptions: Required<Options> = {
 	elapseBeforeReport: 300,
 	includeBranches: false,
 	reporter: logReporter,
 };
 
-export default function stats(gulp: Gulp, options: Options = {}): void {
+function stats(gulp: Gulp, options: Options = {}): void {
 	const { elapseBeforeReport, includeBranches, reporter } = {
 		...defaultOptions,
 		...options,
@@ -62,3 +62,7 @@ export default function stats(gulp: Gulp, options: Options = {}): void {
 		}
 	});
 }
+
+stats.defaultOptions = defaultOptions;
+
+export = stats;
