@@ -1,6 +1,6 @@
 import { Gulp } from 'gulp';
 import prettyTime from 'pretty-hrtime';
-import { Report, HrTime, GulpEvent, Reporter } from './utils/types';
+import { Report, GulpEvent, Reporter } from './utils/types';
 import logReporter from './reporters/log';
 import hrToMs from './utils/hrToMs';
 
@@ -21,17 +21,13 @@ function stats(gulp: Gulp, options: Options = {}): void {
 		...defaultOptions,
 		...options,
 	};
+
 	const tasksInProgress: { [id: number]: number } = {};
 	const report: Report = { tasks: [] };
-	let startTime: HrTime;
 	let reportTimeout: ReturnType<typeof setTimeout>;
 
 	gulp.on('start', ({ uid }: GulpEvent) => {
 		clearTimeout(reportTimeout);
-
-		if (!startTime) {
-			startTime = process.hrtime();
-		}
 
 		tasksInProgress[uid] = uid;
 	});
@@ -49,14 +45,12 @@ function stats(gulp: Gulp, options: Options = {}): void {
 		delete tasksInProgress[uid];
 
 		if (Object.keys(tasksInProgress).length === 0) {
-			const totalTime = process.hrtime(startTime);
-
 			report.tasks = report.tasks.sort(
 				({ duration: a }, { duration: b }) => b - a
 			);
-			report.totalTime = hrToMs(totalTime);
-			report.totalTimeHr = totalTime;
-			report.totalTimePretty = prettyTime(totalTime);
+			report.totalTime = hrToMs(duration);
+			report.totalTimeHr = duration;
+			report.totalTimePretty = prettyTime(duration);
 
 			reportTimeout = setTimeout(reporter, elapseBeforeReport, report);
 		}
