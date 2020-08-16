@@ -33,18 +33,23 @@ function stats(gulp: Gulp, options: Options = {}): void {
 	});
 
 	gulp.on('stop', ({ uid, name, duration, branch: isBranch }: GulpEvent) => {
+		delete tasksInProgress[uid];
+
+		const totalRemainingTasksInProgress = Object.keys(tasksInProgress).length;
+		const isRoot = totalRemainingTasksInProgress === 0;
+
 		if (includeBranches || !isBranch) {
 			report.tasks.push({
 				name,
 				duration: hrToMs(duration),
 				durationHr: duration,
 				durationPretty: prettyTime(duration),
+				isBranch,
+				isRoot,
 			});
 		}
 
-		delete tasksInProgress[uid];
-
-		if (Object.keys(tasksInProgress).length === 0) {
+		if (isRoot) {
 			report.tasks = report.tasks.sort(
 				({ duration: a }, { duration: b }) => b - a
 			);

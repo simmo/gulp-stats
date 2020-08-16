@@ -13,16 +13,26 @@ const logReporter: Reporter = ({ tasks, totalTime, totalTimePretty }) => {
 		return;
 	}
 
+	if (tasks.length === 1) {
+		console.log(header('1 task', totalTimePretty));
+
+		return;
+	}
+
+	const tasksExcludingRoot = tasks.filter(({ isRoot }) => !isRoot);
+
 	console.log(
 		`${header(
-			`${tasks.length} task${tasks.length === 1 ? '' : 's'}`,
+			`${tasksExcludingRoot.length} task${
+				tasksExcludingRoot.length === 1 ? '' : 's'
+			}`,
 			totalTimePretty
 		)}\n${table(
 			[
 				['Task', 'Time', '% of total'].map(header =>
 					chalk.bold.underline(header)
 				),
-				...tasks.map(({ duration, durationPretty, name }) => [
+				...tasksExcludingRoot.map(({ duration, durationPretty, name }) => [
 					name,
 					chalk.cyan(durationPretty),
 					chalk.magenta(Math.round((duration / totalTime) * 100) + '%'),
