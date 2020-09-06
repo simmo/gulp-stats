@@ -8,6 +8,8 @@ export type Report = {
 		duration: number;
 		durationHr: HrTime;
 		durationPretty: string;
+		isBranch: boolean;
+		isRoot: boolean;
 	}[];
 	totalTime?: number;
 	totalTimeHr?: HrTime;

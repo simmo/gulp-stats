@@ -40,6 +40,8 @@ A `Report` is defined as:
 		duration: number;
 		durationHr: [number, number];
 		durationPretty: string;
+		isBranch: boolean;
+		isRoot: boolean;
 	}
 	[];
 	totalTime: number;

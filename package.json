@@ -11,8 +11,9 @@
 	"scripts": {
 		"lint": "eslint ./src --ext .ts",
 		"test": "jest",
-		"build": "tsc --declaration",
-		"prepublish": "rm -rf ./dist & npm run build"
+		"watch": "tsc --watch",
+		"build": "rm -rf ./dist & tsc",
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [
 		"gulp",
