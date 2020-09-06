@@ -1,6 +1,6 @@
 {
 	"name": "gulp-stats",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Display task stats summary for Gulp",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
