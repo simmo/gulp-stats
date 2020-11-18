@@ -79,6 +79,7 @@
 		}
 	},
 	"jest": {
+                "colors": true,
 		"timers": "modern",
 		"verbose": true,
 		"moduleFileExtensions": [
