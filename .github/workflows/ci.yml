@@ -28,4 +28,4 @@ jobs:
         FORCE_COLOR: 1
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: FORCE_COLOR=3 npm test
