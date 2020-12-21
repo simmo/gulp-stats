@@ -60,7 +60,35 @@ taskB  [36m100 ms[39m         [35m11%[39m
 `);
 	});
 
-	test('use singular when 1 task', () => {
+	test('use singular when 1 task with root', () => {
+		log({
+			tasks: [
+				{
+					name: 'taskD',
+					duration: 0.4,
+					durationHr: [0, 400000000],
+					durationPretty: '400 ms',
+					isBranch: false,
+					isRoot: false,
+				},
+				{
+					name: 'default',
+					duration: 0.4,
+					durationHr: [0, 400000000],
+					durationPretty: '400 ms',
+					isBranch: false,
+					isRoot: true,
+				},
+			],
+			totalTime: 0.4,
+			totalTimeHr: [0, 400000000],
+			totalTimePretty: '400 ms',
+		});
+
+		expect(stripAnsi(logSpy.mock.results[0].value)).toContain('ran 1 task');
+	});
+
+	test('use singular when 1 task without root', () => {
 		log({
 			tasks: [
 				{
