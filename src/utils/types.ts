@@ -1,6 +1,6 @@
 export type Reporter = (report: Report) => void;
 
-export type HrTime = [number, number];
+export type HrTime = [seconds: number, nnanoseconds: number];
 
 export type Report = {
 	tasks: {
